@@ -1,0 +1,17 @@
+
+services:
+  api:
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    container_name: api
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - 90:5055
+      - 5174:5172
+    volumes:
+      - ./:/app
+    tty: true
+    stdin_open: true
+    restart: on-failure
