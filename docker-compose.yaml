@@ -1,4 +1,3 @@
-
 services:
   api:
     extra_hosts:
