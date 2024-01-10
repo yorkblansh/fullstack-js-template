@@ -1,8 +1,8 @@
 services:
-  api:
+  app:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-    container_name: api
+    container_name: app
     build:
       context: ./
       dockerfile: ./Dockerfile
