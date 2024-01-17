@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20
 
 RUN apt-get update && apt-get install fish vim curl sudo tmux -y && \
     echo "fish" >>~/.bashrc
@@ -6,8 +6,7 @@ RUN apt-get update && apt-get install fish vim curl sudo tmux -y && \
 RUN echo 'root:123' | chpasswd
 RUN echo 'node:123' | chpasswd
 
-RUN npm i -g npm
-RUN npm i -g npm-check-updates
+RUN npm i -g npm npm-check-updates bun
 
 RUN sudo usermod -a -G sudo node
 
@@ -23,6 +22,15 @@ RUN echo "fish" >>~/.bashrc
 RUN mkdir -p ~/.config/fish
 RUN echo "alias tmux='tmux -2'" >>~/.config/fish/config.fish
 RUN echo "set -g default-terminal 'xterm-256color' \n set-option -ga terminal-overrides ',xterm-256color:Tc'" >>~/.tmux.conf
+
+# install lazygit
+RUN wget https://github.com/jesseduffield/lazygit/releases/download/v$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')/lazygit_$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')_Linux_32-bit.tar.gz -P ~/.lazygit/
+RUN tar -xf ~/.lazygit/lazygit_$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')_Linux_32-bit.tar.gz -C ~/.lazygit/
+RUN echo "alias lazygit='~/.lazygit/lazygit'" >>~/.config/fish/config.fish
+RUN echo "alias lz='~/.lazygit/lazygit'" >>~/.config/fish/config.fish
+
+RUN git config --global core.autocrlf true
+
 
 WORKDIR /app
 
