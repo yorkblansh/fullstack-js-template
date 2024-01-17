@@ -1,4 +1,7 @@
 services:
+  node-20:
+    image: node:20
+
   app:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
