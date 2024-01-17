@@ -28,9 +28,8 @@ RUN wget https://github.com/jesseduffield/lazygit/releases/download/v$(curl -s "
 RUN tar -xf ~/.lazygit/lazygit_$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')_Linux_32-bit.tar.gz -C ~/.lazygit/
 RUN echo "alias lazygit='~/.lazygit/lazygit'" >>~/.config/fish/config.fish
 RUN echo "alias lz='~/.lazygit/lazygit'" >>~/.config/fish/config.fish
-
 RUN git config --global core.autocrlf true
-
+RUN git config --global --add safe.directory '*'
 
 WORKDIR /app
 
