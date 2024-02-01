@@ -1,0 +1,6 @@
+PUT http://10.212.1.4:1401/f16 HTTP/1.1
+content-type: application/json
+
+{
+    "barcode16": "2919207900000397"
+}
