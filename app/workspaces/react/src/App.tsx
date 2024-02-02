@@ -1,9 +1,8 @@
-import './App.scss'
 import _ from 'lodash'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const App = () => {
-	return <main className="App"></main>
+	return <main className="App">123</main>
 }
 
 export const Router = () => {
@@ -11,7 +10,7 @@ export const Router = () => {
 		<RouterProvider
 			router={createBrowserRouter([
 				{
-					path: '/inventory',
+					path: '/',
 					element: <App />,
 				},
 			])}
