@@ -4,7 +4,7 @@ services:
 
   app:
     extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - "host.docker.internal:host-gateway"
     container_name: app
     build:
       context: ./
