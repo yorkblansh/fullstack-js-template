@@ -1,6 +1,6 @@
 FROM node:20
 
-RUN apt-get update && apt-get install fish mc vim curl sudo tmux -y && \
+RUN apt-get update && apt-get install fish mc vim curl sudo tmux iputils-ping -y && \
     echo "fish" >>~/.bashrc
 
 RUN echo 'root:123' | chpasswd
