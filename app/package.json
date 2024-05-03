@@ -15,7 +15,7 @@
 			"workspaces/*"
 		]
 	},
-	"packageManager": "yarn@4.1.0",
+	"packageManager": "yarn@4.1.1",
 	"devDependencies": {
 		"@types/lodash": "^4.14.202",
 		"@types/node": "^20.8.4",
