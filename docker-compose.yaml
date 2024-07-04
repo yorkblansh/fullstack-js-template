@@ -1,3 +1,5 @@
+version: "3.1"
+
 services:
   node-20:
     image: node:20
@@ -17,3 +19,23 @@ services:
     tty: true
     stdin_open: true
     restart: on-failure
+
+  db:
+    image: mysql:lts
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: your_database_name
+      MYSQL_USER: your_username
+      MYSQL_PASSWORD: your_password
+    # volumes:
+    #   - /my/own/datadir:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: your_root_password
